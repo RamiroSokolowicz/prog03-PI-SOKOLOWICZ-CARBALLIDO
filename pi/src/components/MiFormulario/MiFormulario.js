@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-
-export default class MiFormulario extends Component {
+import { withRouter } from "react-router-dom";
+class MiFormulario extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,6 +10,9 @@ export default class MiFormulario extends Component {
     }
     controlarForm(evento){
         evento.preventDefault();
+        if(this.state.busqueda !== ""){
+            this.props.history.push(`/resultados/${this.state.busqueda}`);
+        }
 
     }
     controlarImput(evento){
@@ -26,3 +29,5 @@ export default class MiFormulario extends Component {
             </form>
         )}
     }
+
+export default withRouter(MiFormulario);
