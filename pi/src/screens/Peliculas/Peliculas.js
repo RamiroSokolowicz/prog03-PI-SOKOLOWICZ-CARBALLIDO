@@ -1,13 +1,33 @@
+import React, {Component} from 'react';
 
+class Peliculas extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mostrar: false
+            }
+    }
 
+    verDescripcion = () => {
+        this.setState({
+            mostrar: !this.state.mostrar
+        })
+    }
 
-function Peliculas() {
-  return (
-        <section className="app-page">
-            <h2 className="app-page-title">Peliculas</h2>
-            <p className="app-page-text">Esta pantalla puede mostrar el listado completo de peliculas.</p>
-        </section>
-    );
+    render() {
+        return (
+            <section className="app-page">
+                <img className= "app-page-image" src={"https://image.tmdb.org/t/p/w500${pelicula.poster_path}"} />
+                <h2>{pelicula.title}</h2>
+                <p>{pelicula.overview}</p>
+
+                <button onClick={this.verDescripcion}>
+                    {this.state.mostrar ? "Mostrar menos" : "Mostrar más"}
+                </button>
+
+            </section>
+        );
+    }
 }
 
 export default Peliculas;
