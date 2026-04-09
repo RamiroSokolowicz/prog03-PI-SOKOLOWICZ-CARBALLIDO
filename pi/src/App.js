@@ -4,6 +4,7 @@ import Footer from './components/Footer/Footer';
 import { Switch, Route } from 'react-router-dom';
 import Home from './screens/Home/Home';
 import Peliculas from './screens/Peliculas/Peliculas';
+import Detalle from './screens/Detalle/Detalle';
 import Series from './screens/Series/Series';
 import Favoritas from './screens/Favoritas/Favoritas';
 import Register from './screens/Register/Register';
@@ -18,7 +19,8 @@ function App() {
      <main className="app-main">
        <Switch>
          <Route path="/" exact={true} component={Home} />
-         <Route path="/peliculas" component={Peliculas} />
+         <Route path="/peliculas/:id" component={Detalle} />
+         <Route path="/peliculas" exact={true} component={Peliculas} />
          <Route path="/series" component={Series} />
          <Route path="/favoritas" component={Favoritas} />
          <Route path="/register" component={Register} />
