@@ -39,7 +39,7 @@ class PeliculasSection extends Component {
     render() {
         return (
             <>
-                <section className='cardContainer'>
+                <section className='movies row cards'>
                     {this.state.peliculas.map((pelicula) => (
                         <PeliCard
                             key={pelicula.id}

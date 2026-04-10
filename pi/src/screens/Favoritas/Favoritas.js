@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Favoritas() {
+    
     return (
         <section className="app-page">
             <h2 className="app-page-title">Favoritas</h2>
