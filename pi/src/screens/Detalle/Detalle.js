@@ -4,40 +4,142 @@ export default class Detalle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pelicula: null
+            pelicula: null,
+            serie: null,
+            favorit: false
         };
     }
 
     componentDidMount() {
-        const id = this.props.match.params.id;
-        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=baa0951159508b20d0796a6a16699e51`)
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({
-                    pelicula: data
-                });
-            })
-            .catch((error) => console.error('Ocurrió un error:', error));
+        const id = Number(this.props.match.params.id);
+        const tipo = this.props.match.params.tipo;
+
+        let storage = null;
+
+        if (tipo === "movie") {
+            storage = localStorage.getItem('peliculasFavoritas');
+            fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=baa0951159508b20d0796a6a16699e51`)
+                .then((response) => response.json())
+                .then((data) => {
+                    this.setState({
+                        pelicula: data
+                    });
+                })
+                .catch((error) => console.error('Ocurrió un error:', error));
+        }
+        else {
+            storage = localStorage.getItem('seriesFavoritas');
+            fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=baa0951159508b20d0796a6a16699e51`)
+                .then((response) => response.json())
+                .then((data) => {
+                    this.setState({
+                        serie: data
+                    });
+                })
+                .catch((error) => console.error('Ocurrió un error:', error));
+        }
+
+        if (storage != null) {
+            let storageParseado = JSON.parse(storage);
+            if (storageParseado.includes(id)) {
+                this.setState({ favorit: true });
+            }
+        }
     }
 
+    agregarFav(id, tipo) {
+        let storage = null;
+        if (tipo === "movie") {
+            storage = localStorage.getItem('peliculasFavoritas');
+        }
+        else {
+            storage = localStorage.getItem('seriesFavoritas');
+        }
+        if (storage == null) {
+            let favoritos = [id];
+            if (tipo === "movie") {
+                localStorage.setItem('peliculasFavoritas', JSON.stringify(favoritos));
+            }
+            else {
+                localStorage.setItem('seriesFavoritas', JSON.stringify(favoritos));
+            }
+        }
+        else {
+            let storageParseado = JSON.parse(storage);
+
+            storageParseado.push(id);
+            if (tipo === "movie") {
+                localStorage.setItem('peliculasFavoritas', JSON.stringify(storageParseado));
+            }
+            else {
+                localStorage.setItem('seriesFavoritas', JSON.stringify(storageParseado));
+            }
+        }
+        this.setState({ favorit: true });
+    }
+    sacarFav(id, tipo) {
+        let storage = null;
+        if (tipo === "movie") {
+            storage = localStorage.getItem('peliculasFavoritas');
+        }
+        else {
+            storage = localStorage.getItem('seriesFavoritas');
+        }
+        if (storage != null) {
+            let storageParseado = JSON.parse(storage);
+            let favoritosFiltrados = storageParseado.filter(elem => elem !== id);
+            if (tipo === "movie") {
+                localStorage.setItem('peliculasFavoritas', JSON.stringify(favoritosFiltrados));
+            }
+            else {
+                localStorage.setItem('seriesFavoritas', JSON.stringify(favoritosFiltrados));
+            }
+        }
+        this.setState({ favorit: false });
+    }
     render() {
-        const { pelicula } = this.state;
-        if (!pelicula) {
+        const { pelicula, serie, favorit } = this.state;
+        const tipo = this.props.match.params.tipo;
+        if (tipo === "movie" && !pelicula) {
             return <div>Cargando...</div>;
         }
-        return (
-            <div>
-                <h1>Detalle de la película con id {pelicula.id}</h1>
+        if (tipo === "tv" && !serie) {
+            return <div>Cargando...</div>;
+        }
+        if (tipo === "movie") {
+            return (
                 <div>
-                    <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
-                    <h3>Título: {pelicula.title}</h3>
-                    <p>Fecha de estreno: {pelicula.release_date}</p>
-                    <p>Duración: {pelicula.runtime} minutos</p>
-                    <p>Puntaje: {pelicula.vote_average}</p>
-                    <p>Descripción: {pelicula.overview}</p>
-                    <button>Agregar a favoritos</button>
+                    <h1>Detalle de la película con id {pelicula.id}</h1>
+                    <div>
+                        <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
+                        <h3>Título: {pelicula.title}</h3>
+                        <p>Fecha de estreno: {pelicula.release_date}</p>
+                        <p>Duración: {pelicula.runtime} minutos</p>
+                        <p>Puntaje: {pelicula.vote_average}</p>
+                        <p>Descripción: {pelicula.overview}</p>
+                        <button onClick={() => favorit ? this.sacarFav(pelicula.id, "movie") : this.agregarFav(pelicula.id, "movie")}>
+                            {!favorit ? "agregar a favoritos" : "sacar de favoritos"}</button>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else {
+            return (
+                <div>
+                    <h1>Detalle de la serie con id {serie.id}</h1>
+                    <div>
+                        <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
+                        <h3>Título: {serie.name}</h3>
+                        <p>Fecha de estreno: {serie.first_air_date}</p>
+                        <p>Duración: {serie.episode_run_time[0]} minutos</p>
+                        <p>Puntaje: {serie.vote_average}</p>
+                        <p>Descripción: {serie.overview}</p>
+                        <button onClick={() => favorit ? this.sacarFav(serie.id, "tv") : this.agregarFav(serie.id, "tv")}>
+                            {!favorit ? "agregar a favoritos" : "sacar de favoritos"}</button>                        
+                    </div>
+                </div>
+            );
+
+        }
     }
 }

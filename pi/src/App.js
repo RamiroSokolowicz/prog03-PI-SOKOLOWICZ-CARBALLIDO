@@ -19,7 +19,7 @@ function App() {
      <main className="app-main">
        <Switch>
          <Route path="/" exact={true} component={Home} />
-         <Route path="/peliculas/:id" component={Detalle} />
+         <Route path="/detalle/:tipo/:id" component={Detalle} />
          <Route path="/peliculas" exact={true} component={Peliculas} />
          <Route path="/series" component={Series} />
          <Route path="/favoritas" component={Favoritas} />

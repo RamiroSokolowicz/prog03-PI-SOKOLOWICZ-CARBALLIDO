@@ -18,30 +18,30 @@ class PeliCard extends Component {
     };
 
     agregarFavoritos(id) {
-        let storage = localStorage.getItem('favoritos');
+        let storage = localStorage.getItem('peliculasFavoritas');
         if (storage == null) {
             let favoritos = [id];
-            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+            localStorage.setItem('peliculasFavoritas', JSON.stringify(favoritos));
         }
         else {
             let storageParseado = JSON.parse(storage);
             storageParseado.push(id);
-            localStorage.setItem('favoritos', JSON.stringify(storageParseado));
+            localStorage.setItem('peliculasFavoritas', JSON.stringify(storageParseado));
         }  
         this.setState({ esFav : !this.state.esFav });
     };
     sacarFavoritos(id) {
-        let storage = localStorage.getItem('favoritos');
+        let storage = localStorage.getItem('peliculasFavoritas');
         if (storage != null) {
             let storageParseado = JSON.parse(storage);
             let favoritosFiltrados = storageParseado.filter(elem => elem !== id);
-            localStorage.setItem('favoritos', JSON.stringify(favoritosFiltrados));
+            localStorage.setItem('peliculasFavoritas', JSON.stringify(favoritosFiltrados));
         }
         this.setState({ esFav : !this.state.esFav });
     };
 
     componentDidMount() {
-        let storage = localStorage.getItem('favoritos');
+        let storage = localStorage.getItem('peliculasFavoritas');
         if (storage != null) {
             let storageParseado = JSON.parse(storage);
             if (storageParseado.includes(this.props.data.id)) {
@@ -64,7 +64,7 @@ class PeliCard extends Component {
                 <section className={this.state.mostrarMas ? 'show' : 'hide'}>
                     <p>{this.props.data.overview}</p>
                 </section>
-                <Link to={`/peliculas/${this.props.data.id}`}>
+                <Link to={`detalle/movie/${this.props.data.id}`}>
                     <button className = "btn btn-primary">Ir a detalle</button>
                 </Link>
                 <button className = "btn alert-primary" onClick={() => this.state.esFav ? this.sacarFavoritos(this.props.data.id): this.agregarFavoritos(this.props.data.id)}>
