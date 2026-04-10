@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PeliCard from '../PeliCard/PeliCard';
+import SeriesCard from '../SeriesCard/SeriesCard';
 
-const api = 'https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51';
+const api = 'https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51';
 
-class PeliculasSection extends Component {
+class SeriesSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,7 +18,7 @@ class PeliculasSection extends Component {
             .then((data) => {
                 this.setState({
                     peliculas: data.results,
-                    proxPag: `https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`
+                    proxPag: `https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`
                 });
             })
             .catch((error) => console.error('Ocurrió un error:', error));
@@ -30,7 +30,7 @@ class PeliculasSection extends Component {
             .then((data) => {
                 this.setState({
                     peliculas: this.state.peliculas.concat(data.results),
-                    proxPag: `https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`
+                    proxPag: `https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`
                 });
             })
             .catch((error) => console.error('Ocurrió un error:', error));
@@ -41,7 +41,7 @@ class PeliculasSection extends Component {
             <>
                 <section className='cardContainer'>
                     {this.state.peliculas.map((pelicula) => (
-                        <PeliCard
+                        <SeriesCard
                             key={pelicula.id}
                             data={pelicula}
                         />
@@ -55,4 +55,4 @@ class PeliculasSection extends Component {
     }
 }
 
-export default PeliculasSection;
+export default SeriesSection;

@@ -1,13 +1,80 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function Favoritas() {
-    
-    return (
-        <section className="app-page">
-            <h2 className="app-page-title">Favoritas</h2>
-            <p className="app-page-text">Aca van a aparecer las peliculas y series favoritas del usuario.</p>
-        </section>
-    );
+
+export default class Favoritas extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            peliculas: [],
+            series: []
+        };
+    }
+
+    componentDidMount() {
+        let storage = localStorage.getItem('favoritos');
+        if (storage != null) {
+            let storageParseado = JSON.parse(storage);
+            let peliculasFavoritas = [];
+            let seriesFavoritas = [];
+            storageParseado.forEach(id => {
+                fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=baa0951159508b20d0796a6a16699e51`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        peliculasFavoritas.push(data);
+                        this.setState({ peliculas: peliculasFavoritas });
+                    })
+                    .catch((error) => console.error('Ocurrió un error:', error));
+            });
+            storageParseado.forEach(id => {
+                fetch(`https://api.themoviedb.org/3/tv/${id}?api_key=baa0951159508b20d0796a6a16699e51`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        seriesFavoritas.push(data);
+                        this.setState({ series: seriesFavoritas });
+                    })
+                    .catch((error) => console.error('Ocurrió un error:', error));
+            });
+        }
+    }
+
+
+    render() {
+        return (
+            <>
+                <div>
+                    <h1>Películas Favoritas</h1>
+                    <div className='peliculas-favoritas'>
+                        {this.state.peliculas.length > 0 ? (
+                            this.state.peliculas.map((pelicula) => (
+                                <div key={pelicula.id}>
+                                    <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
+                                    <h3>{pelicula.title}</h3>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No hay películas favoritas.</p>
+                        )}
+                    </div>
+                </div>
+
+                <div>
+                    <h1>Series Favoritas</h1>
+                    <div className='series-favoritas'>
+                        {this.state.series.length > 0 ? (
+                            this.state.series.map((serie) => (
+                                <div key={serie.id}>
+                                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
+                                    <h3>{serie.name}</h3>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No hay series favoritas.</p>
+                        )}
+                    </div>
+                </div>
+            </>
+        );
+
+    }
 }
-
-export default Favoritas;
+//hay algun error al encontrar las peliculas y series favoritas. se agregan cosas que no se agregan
