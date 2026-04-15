@@ -6,6 +6,7 @@ class MiFormulario extends Component {
         super(props);
         this.state = {
             busqueda: "",
+            tipo:''
 
         }
     }
