@@ -55,7 +55,7 @@ export default class Favoritas extends Component {
                                 <div key={pelicula.id}>
                                     <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
                                     <h3>{pelicula.title}</h3>
-                                    <p>Fecha de estreno: {pelicula.release_date}</p>
+                                    <p>{pelicula.overview}</p>
                                     <Link to={`detalle/movie/${pelicula.id}`}>
                                         <button className="btn btn-primary">Ir a detalle</button>
                                     </Link>
@@ -75,6 +75,8 @@ export default class Favoritas extends Component {
                                 <div key={serie.id}>
                                     <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
                                     <h3>{serie.name}</h3>
+                                    <p>{serie.overview}</p>
+
                                     <Link to={`detalle/tv/${serie.id}`}>
                                         <button className="btn btn-primary">Ir a detalle</button>
                                     </Link>

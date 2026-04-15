@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MiFormulario from '../../components/MiFormulario/MiFormulario';
 import PeliCard from '../../components/PeliCard/PeliCard';
 import SeriesCard from  '../../components/SeriesCard/SeriesCard';
+import { Link } from 'react-router-dom';
 
 const apiMovie = 'https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51';
 const apiSerie = 'https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51';
@@ -50,6 +51,9 @@ class Home extends Component {
                         />
                     ))}
                 </section>
+                    <Link to="/peliculas">
+                        <button className="btn btn-primary">Ver todas las películas</button>
+                    </Link>
 
                 <p className="app-page-text">Esta pantalla muestra una selección inicial de 5 series.</p>
                 <section className='cardContainer'>
@@ -60,6 +64,9 @@ class Home extends Component {
                         />
                     ))}
                 </section>
+                    <Link to="/series">
+                        <button className="btn btn-primary">Ver todas las series</button>
+                    </Link>
             </section>
         );
     }
