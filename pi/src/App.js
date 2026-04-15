@@ -25,7 +25,7 @@ function App() {
          <Route path="/favoritas" component={Favoritas} />
          <Route path="/register" component={Register} />
          <Route path="/login" component={Login} />
-         <Route path="/resultados/:busqueda" component={Resultados} />
+         <Route path="/resultados/:busqueda/:tipo" component={Resultados} />
          <Route path="*" component={NotFound} />
        </Switch>
      </main>

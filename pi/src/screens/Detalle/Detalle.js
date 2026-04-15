@@ -98,7 +98,10 @@ export default class Detalle extends Component {
         this.setState({ favorit: false });
     }
     render() {
-        const { pelicula, serie, favorit } = this.state;
+        const pelicula = this.state.pelicula;
+        const serie = this.state.serie;
+        const favorit = this.state.favorit;
+        
         const tipo = this.props.match.params.tipo;
         if (tipo === "movie" && !pelicula) {
             return <div>Cargando...</div>;

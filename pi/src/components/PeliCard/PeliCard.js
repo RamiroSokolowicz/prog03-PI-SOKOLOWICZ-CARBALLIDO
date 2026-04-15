@@ -57,10 +57,10 @@ class PeliCard extends Component {
                     src={`https://image.tmdb.org/t/p/w500${this.props.data.poster_path}`}
                     alt={this.props.data.title}
                 />
-                <h2>{this.props.data.title}</h2>
-                <button className="btn btn-primary" onClick={this.mostrameMas}>
-                    {this.state.mostrarMas ? "Ocultar descripción" : "Ver descripción"}
-                </button>
+                    <h2>{this.props.data.title}</h2>
+                    <button className="btn btn-primary" onClick={this.mostrameMas}>
+                        {this.state.mostrarMas ? "Ocultar descripción" : "Ver descripción"}
+                    </button>
                 <section className={this.state.mostrarMas ? 'show' : 'hide'}>
                     <p>{this.props.data.overview}</p>
                 </section>
