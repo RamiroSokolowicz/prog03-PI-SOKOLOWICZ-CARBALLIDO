@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
+import './MiFormulario.css';
 
 class MiFormulario extends Component {
     constructor(props) {
@@ -32,16 +33,23 @@ class MiFormulario extends Component {
 
     render() {
         return (
-            <div>
-            <form onSubmit={(evento) => this.controlarForm(evento)}>
-                <input type="text" placeholder="Buscar..." onChange={(evento) => this.controlarImput(evento)}/>
-                <button type="submit">Buscar</button>
-            </form>
-                <label>Peliculas</label>
-                <input type="radio" name="tipo" value="movie" onChange={(evento) => this.controlarTipo(evento)}/>
-                <label>Series</label>
-                <input type="radio" name="tipo" value="tv" onChange={(evento) => this.controlarTipo(evento)}/>
+            <div className="formulario">
+                <form className="formulario-busqueda" onSubmit={(evento) => this.controlarForm(evento)}>
+                    <input type="text" placeholder="Buscar..." onChange={(evento) => this.controlarImput(evento)}/>
+                    <button type="submit">Buscar</button>
+                </form>
 
+                <div className="formulario-tipo">
+                    <label>
+                        <input type="radio" name="tipo" value="movie" onChange={(evento) => this.controlarTipo(evento)}/>
+                        Peliculas
+                    </label>
+
+                    <label>
+                        <input type="radio" name="tipo" value="tv" onChange={(evento) => this.controlarTipo(evento)}/>
+                        Series
+                    </label>
+                </div>
             </div>
         )}
     }

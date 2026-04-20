@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Detalle.css';
 
 export default class Detalle extends Component {
     constructor(props) {
@@ -111,36 +112,42 @@ export default class Detalle extends Component {
         }
         if (tipo === "movie") {
             return (
-                <div>
-                    <h1>Detalle de la película con id {pelicula.id}</h1>
-                    <div>
-                        <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
-                        <h3>Título: {pelicula.title}</h3>
+                <section className='app-page'>
+
+                <div className='detalle-container'>
+                    <img className='detalle-img' src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
+
+                    <div className='detalle-info'>
+                        <h2>Título: {pelicula.title}</h2>
                         <p>Fecha de estreno: {pelicula.release_date}</p>
                         <p>Duración: {pelicula.runtime} minutos</p>
                         <p>Puntaje: {pelicula.vote_average}</p>
-                        <p>Descripción: {pelicula.overview}</p>
-                        <button onClick={() => favorit ? this.sacarFav(pelicula.id, "movie") : this.agregarFav(pelicula.id, "movie")}>
+                        <p className='detalle-descripcion'>Descripción: {pelicula.overview}</p>
+                        <button className='detalle-boton' onClick={() => favorit ? this.sacarFav(pelicula.id, "movie") : this.agregarFav(pelicula.id, "movie")}>
                             {!favorit ? "agregar a favoritos" : "sacar de favoritos"}</button>
                     </div>
                 </div>
+                </section>
             );
         }
         else {
             return (
-                <div>
-                    <h1>Detalle de la serie con id {serie.id}</h1>
-                    <div>
-                        <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
+                <section className='app-page'>
+
+                <div className='detalle-container'>
+                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
+
+                    <div className='detalle-info'>
                         <h3>Título: {serie.name}</h3>
                         <p>Fecha de estreno: {serie.first_air_date}</p>
                         <p>Duración: {serie.episode_run_time[0]} minutos</p>
                         <p>Puntaje: {serie.vote_average}</p>
-                        <p>Descripción: {serie.overview}</p>
-                        <button onClick={() => favorit ? this.sacarFav(serie.id, "tv") : this.agregarFav(serie.id, "tv")}>
+                        <p className='detalle-descripcion'>Descripción: {serie.overview}</p>
+                        <button className='detalle-boton' onClick={() => favorit ? this.sacarFav(serie.id, "tv") : this.agregarFav(serie.id, "tv")}>
                             {!favorit ? "agregar a favoritos" : "sacar de favoritos"}</button>                        
                     </div>
                 </div>
+                </section>
             );
 
         }

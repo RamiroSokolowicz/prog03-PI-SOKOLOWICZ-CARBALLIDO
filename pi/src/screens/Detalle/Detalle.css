@@ -1,0 +1,42 @@
+.detalle-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.detalle-img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+.detalle-info {
+    max-width: 600px;
+}
+
+.detalle-info h2 {
+    margin-top: 0;
+    font-size: 28px;
+}
+
+.detalle-info p {
+    margin: 8px 0;
+    color: #ccc;
+}
+
+.detalle-descripcion {
+    margin-top: 15px;
+}
+
+.detalle-boton {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: 2px solid #1f1f1f;
+    border-radius: 6px;
+    background-color: #111111;
+    color: white;
+}
+
+.detalle-boton:hover {
+    background-color: #6f0409;
+}

@@ -1,12 +1,15 @@
 import React from 'react';
 import PeliculasSection from '../../components/Peliculas/Peliculas';
+import './Peliculas.css';
 
 function Peliculas() {
     return (
-        <div>
-            <h1>Todas las películas</h1>
-            <PeliculasSection />
-        </div>
+        <section className="app-page">
+            <section className="seccion-home">
+                    <h1 className="seccion-titulo">Todas las películas</h1>
+                    <PeliculasSection />
+            </section>
+        </section>
     );
 }
 

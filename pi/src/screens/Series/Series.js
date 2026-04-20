@@ -3,10 +3,12 @@ import SeriesSection from '../../components/Series/Series';
 
 function Series() {
     return (
-        <div>
-            <h1>Todas las series</h1>
-            <SeriesSection />
-        </div>
+        <section className="app-page">
+        <section className="seccion-home">
+                <h1 className="seccion-titulo">Todas las Series</h1>
+                <SeriesSection />
+        </section>
+    </section>
     );}
 
 export default Series;

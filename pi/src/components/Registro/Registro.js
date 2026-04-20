@@ -68,13 +68,22 @@ class Registro extends Component{
     
     render(){
         return(
-            <div>
+            <div className='row justify-content-center'>
+                <div className='col-md-6'>
                 <form onSubmit={(evento) => this.controlarSubmit(evento)}>
-                    <input type="text" placeholder="email" onChange={this.controlarImputs} />
-                    <input type="password" placeholder="password" onChange={this.controlarImputs} />
-                    <button type="submit">Register</button>
+                    <div className='form-group'>
+                        <input type="text" className='form-control' placeholder="email" onChange={this.controlarImputs} />
+                    </div>
+                    <div className='form-group'>
+                        <input type="password" className='form-control' placeholder="password" onChange={this.controlarImputs} />
+                    </div>
+                    <button type="submit" className='btn btn-primary btn-block' >Register</button>
                 </form>
+                </div>
             </div>
+
+
+
         )
     }
 

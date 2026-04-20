@@ -3,6 +3,7 @@ import MiFormulario from '../../components/MiFormulario/MiFormulario';
 import PeliCard from '../../components/PeliCard/PeliCard';
 import SeriesCard from  '../../components/SeriesCard/SeriesCard';
 import { Link } from 'react-router-dom';
+import './Home.css';
 
 const apiMovie = 'https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51';
 const apiSerie = 'https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51';
@@ -40,35 +41,44 @@ class Home extends Component {
     render() {
         return (
             <section className="app-page">
-                <h2 className="app-page-title">Home</h2>
-                    <MiFormulario />
-                <p className="app-page-text">Esta pantalla muestra una selección inicial de 5 películas.</p>
-                <section className='cardContainer'>
+                <MiFormulario />
+
+                <section className="seccion-home">
+
+                     <div className="seccion-header">
+                         <h2>PELÍCULAS</h2>
+                         <Link to="/peliculas" className="ver-mas">VER TODAS</Link>
+                     </div>
+
+                <section className="cardContainer">
                     {this.state.peliculas.map((pelicula) => (
                         <PeliCard
                             key={pelicula.id}
                             data={pelicula}
                         />
                     ))}
-                </section>
-                    <Link to="/peliculas">
-                        <button className="btn btn-primary">Ver todas las películas</button>
-                    </Link>
+                 </section>
 
-                <p className="app-page-text">Esta pantalla muestra una selección inicial de 5 series.</p>
-                <section className='cardContainer'>
+                </section>
+
+
+                <section className="seccion-home">
+                    <div className="seccion-header">
+                        <h2>SERIES</h2>
+                        <Link to="/series" className="ver-mas">VER TODAS</Link>
+                     </div>
+
+                <section className="cardContainer">
                     {this.state.series.map((serie) => (
                         <SeriesCard
                             key={serie.id}
                             data={serie}
                         />
                     ))}
-                </section>
-                    <Link to="/series">
-                        <button className="btn btn-primary">Ver todas las series</button>
-                    </Link>
-            </section>
-        );
+                 </section>
+                 </section>
+    </section>
+ );
     }
 }
 

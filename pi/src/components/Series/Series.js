@@ -40,10 +40,10 @@ class SeriesSection extends Component {
         return (
             <>
                 <section className='cardContainer'>
-                    {this.state.peliculas.map((pelicula) => (
+                    {this.state.peliculas.map((serie) => (
                         <SeriesCard
-                            key={pelicula.id}
-                            data={pelicula}
+                            key={serie.id}
+                            data={serie}
                         />
                     ))}
                 </section>
