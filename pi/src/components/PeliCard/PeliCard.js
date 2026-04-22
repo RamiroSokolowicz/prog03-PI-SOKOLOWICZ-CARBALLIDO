@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './PeliCard.css';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 class PeliCard extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -51,6 +55,9 @@ class PeliCard extends Component {
     }
 
     render() {
+        const usuarioLogueado = cookies.get('user-auth-cookie');
+        //falta terminar 
+
         return (
             <article className='single-card-movie'>
                 <img className ="card-img-top"
@@ -67,8 +74,13 @@ class PeliCard extends Component {
                 <Link to={`detalle/movie/${this.props.data.id}`}>
                     <button>Ir a detalle</button>
                 </Link>
-                <button className = "btn alert-primary" onClick={() => this.state.esFav ? this.sacarFavoritos(this.props.data.id): this.agregarFavoritos(this.props.data.id)}>
-                    {!this.state.esFav ? "🩶" : "❤️" }</button>
+                
+                if (usuarioLogueado){
+                    
+                    <button className = "btn alert-primary" onClick={() => this.state.esFav ? this.sacarFavoritos(this.props.data.id): this.agregarFavoritos(this.props.data.id)}>
+                        {!this.state.esFav ? "🩶" : "❤️" }</button>
+                }
+
             </article>
         );
     }

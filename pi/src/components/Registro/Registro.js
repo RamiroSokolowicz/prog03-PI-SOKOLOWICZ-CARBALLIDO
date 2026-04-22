@@ -24,7 +24,7 @@ class Registro extends Component{
         }
         
 
-        if(this.state.email.includes("@")){
+        if(this.state.email.includes("@") === false){
             alert("El email debe contener un @");
             return;
         }
@@ -72,10 +72,10 @@ class Registro extends Component{
                 <div className='col-md-6'>
                 <form onSubmit={(evento) => this.controlarSubmit(evento)}>
                     <div className='form-group'>
-                        <input type="text" className='form-control' placeholder="email" onChange={this.controlarImputs} />
+                        <input type="text" className='form-control' placeholder="email" onChange={(evento) => this.controlarImputs(evento, "email")} />
                     </div>
                     <div className='form-group'>
-                        <input type="password" className='form-control' placeholder="password" onChange={this.controlarImputs} />
+                        <input type="password" className='form-control' placeholder="password" onChange={(evento) => this.controlarImputs(evento, "password")} />
                     </div>
                     <button type="submit" className='btn btn-primary btn-block' >Register</button>
                 </form>

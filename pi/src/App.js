@@ -10,6 +10,7 @@ import Favoritas from './screens/Favoritas/Favoritas';
 import Register from './screens/Register/Register';
 import Login from './screens/Login/Login';
 import Resultados from './screens/Resultados/Resultados';
+import Logout from './components/Logout/Logout';
 import NotFound from './screens/NotFound/NotFound';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
          <Route path="/register" component={Register} />
          <Route path="/login" component={Login} />
          <Route path="/resultados/:busqueda/:tipo" component={Resultados} />
+          <Route path="/logout" component={Logout} />
          <Route path="*" component={NotFound} />
        </Switch>
      </main>
