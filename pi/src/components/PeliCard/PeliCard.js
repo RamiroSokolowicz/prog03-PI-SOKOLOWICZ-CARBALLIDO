@@ -56,7 +56,6 @@ class PeliCard extends Component {
 
     render() {
         const usuarioLogueado = cookies.get('user-auth-cookie');
-        //falta terminar 
 
         return (
             <article className='single-card-movie'>

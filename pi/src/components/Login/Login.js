@@ -6,15 +6,6 @@ import './Login.css';
 const cookies = new Cookies();
 
 
-//componente con estado
-// metodo que gestiona los cambios en el input de email y password
-//como debería funcionar el submit
-//prevenir el comportamiento por defecto del formulario
-//validar email y password (arroba y largo de la contra) si no cumple (credenciales invalidas)
-//ver si existe localstorage de usuarios registrados, si no existe (no hay usuarios registrados) mostrar mensaje de error (no hay usuarios registrados)
-//recuperar el storage de usuarios registrados, parsearlo y buscar (filter) si el email coinciden con alguno de los usuarios registrados
-//si el largo de usuarios filtrados es mayor a 0, entonces comparar la contraseña ingresada con la contraseña del usuario registrado, 
-//si coinciden, redirigir a la pagina de inicio, si no coinciden mostrar mensaje de error (credenciales invalidas)
 class Login extends Component {
     constructor(props) {
         super(props);

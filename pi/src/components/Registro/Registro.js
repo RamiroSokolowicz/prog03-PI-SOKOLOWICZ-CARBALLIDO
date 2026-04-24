@@ -1,4 +1,4 @@
-import React, {Component, use} from 'react'
+import React, {Component} from 'react'
 import { withRouter } from "react-router-dom";
 
 class Registro extends Component{
@@ -58,12 +58,6 @@ class Registro extends Component{
             this.props.history.push("/login");
         }
 
-        //validar si los datos son validos
-        //crear constante que represente al usuarui
-        //recuperamos en storage
-        //verificar si storage es distinto a null
-        //si es null, creamos un array vacio y pusheamos el usuario
-        //si no es null, verificamos si el email no esta en uso, y si no, guardamos al usuario en storage
         };
     
     render(){

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 class SeriesCard extends Component {
     constructor(props) {
@@ -50,6 +53,7 @@ class SeriesCard extends Component {
     }
 
     render() {
+        const usuarioLogueado = cookies.get('user-auth-cookie');
         return (
             <article className='single-card-movie'>
                 <img className ="card-img-top"
@@ -66,8 +70,10 @@ class SeriesCard extends Component {
                 <Link to={`detalle/tv/${this.props.data.id}`}>
                     <button>Ir a detalle</button>
                 </Link>
+                {usuarioLogueado ?(
                 <button className = "btn alert-primary" onClick={() => this.state.esFav ? this.sacarFavoritos(this.props.data.id): this.agregarFavoritos(this.props.data.id)}>
                     {!this.state.esFav ? "🩶" : "❤️" }</button>
+                ) : null}
             </article>
         );
     }
