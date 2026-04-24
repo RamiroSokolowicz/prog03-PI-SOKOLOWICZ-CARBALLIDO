@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Detalle.css';
+import Header from '../../components/Header/Header.js';
+
 
 export default class Detalle extends Component {
     constructor(props) {
@@ -112,6 +114,8 @@ export default class Detalle extends Component {
         }
         if (tipo === "movie") {
             return (
+                    <>
+                    <Header />
                 <section className='app-page'>
 
                 <div className='detalle-container'>
@@ -128,6 +132,7 @@ export default class Detalle extends Component {
                     </div>
                 </div>
                 </section>
+                </>
             );
         }
         else {

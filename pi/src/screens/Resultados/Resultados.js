@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Header from '../../components/Header/Header.js';
+
 
 export default class Resultados extends Component {
     constructor(props) {
@@ -32,6 +34,9 @@ export default class Resultados extends Component {
     }
     render() {
         return (
+                <>
+                <Header />
+            
             <div>
                 <h1>Resultados de busqueda para: {this.props.match.params.busqueda}</h1>
                 <section className='cardContainer'>
@@ -49,6 +54,7 @@ export default class Resultados extends Component {
                 </section>
 
             </div>
+            </>
         )
     }
 }

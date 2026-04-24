@@ -68,18 +68,20 @@ class Registro extends Component{
     
     render(){
         return(
-            <div className='row justify-content-center'>
-                <div className='col-md-6'>
-                <form onSubmit={(evento) => this.controlarSubmit(evento)}>
-                    <div className='form-group'>
-                        <input type="text" className='form-control' placeholder="email" onChange={(evento) => this.controlarImputs(evento, "email")} />
+            <div className='login-container'>
+                <form className='login-form' onSubmit={(evento) => this.controlarSubmit(evento)}>
+                    <h2>REGISTRO</h2>
+                    <div className='login-campo'>
+                        <label htmlFor="email">Email:</label>
+                        <input type="text" placeholder="email" onChange={(evento) => this.controlarImputs(evento, "email")} />
                     </div>
-                    <div className='form-group'>
-                        <input type="password" className='form-control' placeholder="password" onChange={(evento) => this.controlarImputs(evento, "password")} />
+
+                    <div className='login-campo'>
+                        <label htmlFor="password">Password:</label>
+                        <input type="password"  placeholder="password" onChange={(evento) => this.controlarImputs(evento, "password")} />
                     </div>
-                    <button type="submit" className='btn btn-primary btn-block' >Register</button>
+                    <button type="submit" className='login-boton' >Register</button>
                 </form>
-                </div>
             </div>
 
 

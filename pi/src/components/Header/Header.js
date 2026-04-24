@@ -23,7 +23,7 @@ function Header() {
             { name: 'Peliculas', path: '/peliculas' },
             { name: 'Series', path: '/series' },
             { name: 'Login', path: '/login' },
-            { name: 'Registro', path: '/registro' }
+            { name: 'Registro', path: '/register' }
     ];
     }
 

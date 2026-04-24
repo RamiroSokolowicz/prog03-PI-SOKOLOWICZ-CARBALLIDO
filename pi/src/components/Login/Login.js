@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import './Login.css';
 
 const cookies = new Cookies();
 
@@ -62,16 +63,19 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Login</h1>
-                <form onSubmit={this.controlarSubmit}>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" value={this.state.email} onChange={(evento) => this.controlarImputs(evento, "email")} required />
-                    <br />
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" value={this.state.password} onChange={(evento) => this.controlarImputs(evento, "password")} required />
-                    <br />
-                    <button type="submit">Login</button>
+            <div className='login-container'>
+                <form className='login-form' onSubmit={this.controlarSubmit}>
+                    <h2>INICIO DE SESION</h2>
+                    <div className='login-campo'>
+                        <label htmlFor="email">Email:</label>
+                        <input type="email" id="email" value={this.state.email} onChange={(evento) => this.controlarImputs(evento, "email")} required />
+                    </div>
+
+                    <div className='login-campo'>
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" id="password" value={this.state.password} onChange={(evento) => this.controlarImputs(evento, "password")} required />
+                    </div>
+                    <button className='login-boton' type="submit">Login</button>
                 </form>
             </div>
         );

@@ -16,7 +16,6 @@ import NotFound from './screens/NotFound/NotFound';
 function App() {
   return (
    <div className="container app-shell">
-     <Header />
      <main className="app-main">
        <Switch>
          <Route path="/" exact={true} component={Home} />

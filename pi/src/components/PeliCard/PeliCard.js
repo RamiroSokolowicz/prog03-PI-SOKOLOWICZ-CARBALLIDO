@@ -75,11 +75,11 @@ class PeliCard extends Component {
                     <button>Ir a detalle</button>
                 </Link>
                 
-                if (usuarioLogueado){
+                {usuarioLogueado ?(
                     
                     <button className = "btn alert-primary" onClick={() => this.state.esFav ? this.sacarFavoritos(this.props.data.id): this.agregarFavoritos(this.props.data.id)}>
                         {!this.state.esFav ? "🩶" : "❤️" }</button>
-                }
+                ) : null}
 
             </article>
         );

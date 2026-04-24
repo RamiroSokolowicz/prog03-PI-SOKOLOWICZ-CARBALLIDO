@@ -4,6 +4,8 @@ import PeliCard from '../../components/PeliCard/PeliCard';
 import SeriesCard from  '../../components/SeriesCard/SeriesCard';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import Header from '../../components/Header/Header.js';
+
 
 const apiMovie = 'https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51';
 const apiSerie = 'https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51';
@@ -40,6 +42,9 @@ class Home extends Component {
 
     render() {
         return (
+<>
+            <Header />
+
             <section className="app-page">
                 <MiFormulario />
 
@@ -53,8 +58,8 @@ class Home extends Component {
                 <section className="cardContainer">
                     {this.state.peliculas.map((pelicula) => (
                         <PeliCard
-                            key={pelicula.id}
-                            data={pelicula}
+                        key={pelicula.id}
+                        data={pelicula}
                         />
                     ))}
                  </section>
@@ -71,13 +76,14 @@ class Home extends Component {
                 <section className="cardContainer">
                     {this.state.series.map((serie) => (
                         <SeriesCard
-                            key={serie.id}
-                            data={serie}
+                        key={serie.id}
+                        data={serie}
                         />
                     ))}
                  </section>
                  </section>
     </section>
+                    </>
  );
     }
 }

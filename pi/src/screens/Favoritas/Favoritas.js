@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../../components/Header/Header.js';
+import PeliCard from '../../components/PeliCard/PeliCard.js';
+import SeriesCard from '../../components/SeriesCard/SeriesCard.js';
+import './Favoritas.css';
 
 
 
@@ -47,46 +51,48 @@ export default class Favoritas extends Component {
     render() {
         return (
             <>
-                <div>
-                    <h1>Películas Favoritas</h1>
-                    <div className='peliculas-favoritas'>
+            <Header />
+            <section className="app-page">
+                <section className="seccion-home">
+
+                    <div className='seccion-header'>
+                        <h1>Películas Favoritas</h1>
+                    </div>
+
                         {this.state.peliculas.length > 0 ? (
-                            this.state.peliculas.map((pelicula) => (
-                                <div key={pelicula.id}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${pelicula.poster_path}`} alt={pelicula.title} />
-                                    <h3>{pelicula.title}</h3>
-                                    <p>{pelicula.overview}</p>
-                                    <Link to={`detalle/movie/${pelicula.id}`}>
-                                        <button className="btn btn-primary">Ir a detalle</button>
-                                    </Link>
-                                </div>
-                            ))
+                            <section className='cardContainer'>
+                                {this.state.peliculas.map((pelicula) => (
+                                   <PeliCard 
+                                   key={pelicula.id}
+                                   data={pelicula}
+                                   />                
+                            ))}
+                            </section>
                         ) : (
-                            <p>No hay películas favoritas.</p>
+                            <p className='sin-favs'>No hay películas favoritas.</p>
                         )}
-                    </div>
-                </div>
+                </section>
 
-                <div>
-                    <h1>Series Favoritas</h1>
-                    <div className='series-favoritas'>
+                <section className="seccion-home">
+
+                    <div className='seccion-header'>
+                        <h1>Series Favoritas</h1>
+                    </div>
+
                         {this.state.series.length > 0 ? (
-                            this.state.series.map((serie) => (
-                                <div key={serie.id}>
-                                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
-                                    <h3>{serie.name}</h3>
-                                    <p>{serie.overview}</p>
-
-                                    <Link to={`detalle/tv/${serie.id}`}>
-                                        <button className="btn btn-primary">Ir a detalle</button>
-                                    </Link>
-                                </div>
-                            ))
+                            <section className='cardContainer'>
+                            {this.state.series.map((serie) => (
+                                <SeriesCard
+                                    key={serie.id}
+                                    data={serie}
+                                />
+                            ))}
+                            </section>
                         ) : (
-                            <p>No hay series favoritas.</p>
+                            <p className='sin-favs'>No hay series favoritas.</p>
                         )}
-                    </div>
-                </div>
+                </section>
+            </section>
             </>
         );
     }

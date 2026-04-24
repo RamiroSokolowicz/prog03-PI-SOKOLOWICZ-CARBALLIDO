@@ -22,7 +22,6 @@
     background-color: coral;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
 }
 
 .single-card-movie {
@@ -79,5 +78,4 @@
     padding: 10px;
     font-size: 13px;
     color: #ccc;
-    animation: fadeIn 0.3s ease-in;
 }
