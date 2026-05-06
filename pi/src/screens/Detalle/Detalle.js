@@ -142,7 +142,7 @@ export default class Detalle extends Component {
                 <section className='app-page'>
 
                 <div className='detalle-container'>
-                    <img src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
+                    <img className='detalle-img' src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`} alt={serie.name} />
 
                     <div className='detalle-info'>
                         <h3>Título: {serie.name}</h3>
