@@ -137,6 +137,8 @@ export default class Detalle extends Component {
         }
         else {
             return (
+                <>
+                    <Header />
                 <section className='app-page'>
 
                 <div className='detalle-container'>
@@ -153,6 +155,8 @@ export default class Detalle extends Component {
                     </div>
                 </div>
                 </section>
+                </>
+
             );
 
         }
