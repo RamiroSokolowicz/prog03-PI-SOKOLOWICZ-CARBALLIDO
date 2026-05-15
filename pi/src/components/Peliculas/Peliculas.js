@@ -83,4 +83,3 @@ class PeliculasSection extends Component {
     }
 }
 
-export default PeliculasSection;

@@ -1,5 +1,5 @@
 import React from 'react';
-import SeriesSection from '../../components/Series/Series';
+import SeriesSection from '../../components/Series/SeriesN';
 import Header from '../../components/Header/Header.js';
 
 

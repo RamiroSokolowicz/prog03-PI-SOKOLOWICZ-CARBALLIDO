@@ -1,5 +1,5 @@
 import React from 'react';
-import PeliculasSection from '../../components/Peliculas/Peliculas';
+import PeliculasSection from '../../components/Peliculas/PeliculasN';
 import './Peliculas.css';
 import Header from '../../components/Header/Header.js';
 
