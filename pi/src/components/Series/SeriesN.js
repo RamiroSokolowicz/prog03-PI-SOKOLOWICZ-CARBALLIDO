@@ -3,7 +3,7 @@ import SeriesCard from '../SeriesCard/SeriesCard';
 
 const api = 'https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51';
 
-function SeriesSection() {
+function SeriesSection(props) {
     const [series, setSeries] = useState([]);
     const [proxPag, setProxPag] = useState(null);
     const [seriesFiltradas, setSeriesFiltradas] = useState([]);
@@ -21,7 +21,6 @@ function SeriesSection() {
     }, []);
 
     function masSeries() {
-        useEffect(() => {
             fetch(proxPag)
                 .then((response) => response.json())
                 .then((data) =>{
@@ -30,7 +29,7 @@ function SeriesSection() {
                     setProxPag(`https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`);
                 })
                 .catch((error) => console.error('Ocurrió un error:', error));
-    }, []);
+    } [];
 
     function controlarForm(evento){
         evento.preventDefault();
@@ -61,6 +60,6 @@ function SeriesSection() {
         </div>
     );  
 }
-}
+
 
 export default SeriesSection;

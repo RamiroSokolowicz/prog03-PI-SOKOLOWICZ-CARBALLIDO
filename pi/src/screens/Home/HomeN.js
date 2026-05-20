@@ -1,0 +1,79 @@
+import { useState, useEffect } from 'react';
+import MiFormulario from '../../components/MiFormulario/MiFormularioN';
+import PeliCard from '../../components/PeliCard/PeliCardN';
+import SeriesCard from '../../components/SeriesCard/SeriesCardN';
+import { Link } from 'react-router-dom';
+import './Home.css';
+import Header from '../../components/Header/Header.js';
+
+
+function Home() {
+    const [peliculas, setPeliculas] = useState([]);
+    const [series, setSeries] = useState([]);
+    const apiMovie = 'https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51';
+    const apiSerie = 'https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51';
+
+
+    useEffect(() => {
+        fetch(apiMovie)
+            .then((response) => response.json())
+            .then((data) => {
+                setPeliculas(data.results.slice(0, 5));
+            })
+    })
+        .catch((error) => console.error('Ocurrió un error:', error));
+
+    fetch(apiSerie)
+        .then((response) => response.json())
+        .then((data) => {
+            setSeries(data.results.slice(0, 5));
+        })
+        .catch((error) => console.error('Ocurrió un error:', error));
+
+
+    return (
+        <>
+            <Header />
+
+            <section className="app-page">
+                <MiFormulario />
+
+                <section className="seccion-home">
+
+                    <div className="seccion-header">
+                        <h2>PELÍCULAS</h2>
+                        <Link to="/peliculas" className="ver-mas">VER TODAS</Link>
+                    </div>
+
+                    <section className="cardContainer">
+                        {this.state.peliculas.map((pelicula) => (
+                            <PeliCard
+                                key={pelicula.id}
+                                data={pelicula}
+                            />
+                        ))}
+                    </section>
+
+                </section>
+
+
+                <section className="seccion-home">
+                    <div className="seccion-header">
+                        <h2>SERIES</h2>
+                        <Link to="/series" className="ver-mas">VER TODAS</Link>
+                    </div>
+
+                    <section className="cardContainer">
+                        {this.state.series.map((serie) => (
+                            <SeriesCard
+                                key={serie.id}
+                                data={serie}
+                            />
+                        ))}
+                    </section>
+                </section>
+            </section>
+        </>
+    );
+
+}

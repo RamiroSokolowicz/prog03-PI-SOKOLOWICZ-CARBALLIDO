@@ -21,7 +21,6 @@ function PeliculasSection() {
     }, []);
 
     function masPeliculas() {
-        useEffect(() => {
             fetch(proxPag)
                 .then((response) => response.json())
                 .then((data) =>{
@@ -30,7 +29,7 @@ function PeliculasSection() {
                     setProxPag(`https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`);
                 })
                 .catch((error) => console.error('Ocurrió un error:', error));
-    }, []);
+    } [];
 
     function controlarForm(evento){
         evento.preventDefault();
@@ -60,6 +59,6 @@ function PeliculasSection() {
             <button onClick={masPeliculas}>Cargar más</button>
         </div>
     );
-}}
+}
 
 export default PeliculasSection;

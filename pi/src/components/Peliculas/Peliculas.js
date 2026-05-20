@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PeliCard from '../PeliCard/PeliCard';
+import PeliCard from '../PeliCard/PeliCardN';
 
 const api = 'https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51';
 
@@ -27,9 +27,7 @@ class PeliculasSection extends Component {
             .catch((error) => console.error('Ocurrió un error:', error));
     }
 
-    masPeliculas () {
-        console.log("entre a la funcion");
-        
+    masPeliculas () {        
         fetch(this.state.proxPag)
             .then((response) => response.json())
             .then((data) => {
