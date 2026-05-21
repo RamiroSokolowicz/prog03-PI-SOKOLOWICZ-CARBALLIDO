@@ -3,12 +3,12 @@ import Footer from './components/Footer/Footer';
 import { Switch, Route } from 'react-router-dom';
 import Home from './screens/Home/Home';
 import Peliculas from './screens/Peliculas/Peliculas';
-import Detalle from './screens/Detalle/Detalle';
+import Detalle from './screens/Detalle/DetalleN';
 import Series from './screens/Series/Series';
-import Favoritas from './screens/Favoritas/Favoritas';
+import Favoritas from './screens/Favoritas/FavoritasN';
 import Register from './screens/Register/Register';
 import Login from './screens/Login/Login';
-import Resultados from './screens/Resultados/Resultados';
+import Resultados from './screens/Resultados/ResultadosN';
 import Logout from './components/Logout/Logout';
 import NotFound from './screens/NotFound/NotFound';
 

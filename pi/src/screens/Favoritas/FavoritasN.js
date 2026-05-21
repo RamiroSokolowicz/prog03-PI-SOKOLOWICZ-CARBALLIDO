@@ -5,7 +5,7 @@ import SeriesCard from '../../components/SeriesCard/SeriesCardN.js';
 import './Favoritas.css';
 
 
-function Favoritas() {
+function Favoritas(props) {
     const [peliculas, setPeliculas] = useState([]);
     const [series, setSeries] = useState([]);
     useEffect(() => {
@@ -85,3 +85,5 @@ function Favoritas() {
             </>
         );
     }
+
+export default Favoritas;

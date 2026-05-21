@@ -3,14 +3,15 @@ import './Detalle.css';
 import Header from '../../components/Header/Header.js';
 
 
-function Detalle() {
+function Detalle(props) {
     const [pelicula, setPelicula] = useState(null);
     const [serie, setSerie] = useState(null);
     const [favorit, setFavorit] = useState(false);
+    const tipo = props.match.params.tipo;
+
 
     useEffect(() => {
         const id = Number(props.match.params.id);
-        const tipo = props.match.params.tipo;
         let storage = null;
         if (tipo === "movie") {
             storage = localStorage.getItem('peliculasFavoritas');
@@ -116,6 +117,7 @@ function Detalle() {
         }
         else {
             return (
+               
                 <>
                     <Header />
                 <section className='app-page'>
@@ -141,5 +143,5 @@ function Detalle() {
         }
     }
 
-
         
+export default Detalle;

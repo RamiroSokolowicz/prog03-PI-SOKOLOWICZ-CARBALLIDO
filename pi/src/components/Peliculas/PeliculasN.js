@@ -24,12 +24,12 @@ function PeliculasSection() {
             fetch(proxPag)
                 .then((response) => response.json())
                 .then((data) =>{
-                    setPeliculas(peliculas.concat(data.results)),
-                    setPeliculasFiltradas(peliculas.concat(data.results)),
+                    setPeliculas(peliculas.concat(data.results));
+                    setPeliculasFiltradas(peliculas.concat(data.results));
                     setProxPag(`https://api.themoviedb.org/3/movie/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`);
                 })
                 .catch((error) => console.error('Ocurrió un error:', error));
-    } [];
+    };
 
     function controlarForm(evento){
         evento.preventDefault();
@@ -47,16 +47,15 @@ function PeliculasSection() {
 
     return (
         <div>
-            <h2>Películas Populares</h2>
-            <form onSubmit={controlarForm}>
+            <form className='formulario-busqueda' onSubmit={controlarForm}>
                 <input type="text" value={texto} onChange={controlarImput} placeholder="Buscar película..." />
             </form>
-            <div className="peliculas-container">
+            <div className="cardContainer">
                 {peliculasFiltradas.map((pelicula) => (
-                    <PeliCard key={pelicula.id} pelicula={pelicula} />
+                    <PeliCard key={pelicula.id} data={pelicula} />
                 ))}
             </div>
-            <button onClick={masPeliculas}>Cargar más</button>
+            <button className='cargarMas' onClick={masPeliculas}>Cargar más</button>
         </div>
     );
 }

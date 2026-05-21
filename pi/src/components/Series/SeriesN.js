@@ -24,12 +24,12 @@ function SeriesSection(props) {
             fetch(proxPag)
                 .then((response) => response.json())
                 .then((data) =>{
-                    setSeries(series.concat(data.results)),
-                    setSeriesFiltradas(series.concat(data.results)),
+                    setSeries(series.concat(data.results));
+                    setSeriesFiltradas(series.concat(data.results));
                     setProxPag(`https://api.themoviedb.org/3/tv/popular?api_key=baa0951159508b20d0796a6a16699e51&page=${data.page + 1}`);
                 })
                 .catch((error) => console.error('Ocurrió un error:', error));
-    } [];
+    } ;
 
     function controlarForm(evento){
         evento.preventDefault();
@@ -47,16 +47,15 @@ function SeriesSection(props) {
 
     return (
         <div>
-            <h2>Series Populares</h2>
-            <form onSubmit={controlarForm}>
+            <form className='formulario-busqueda' onSubmit={controlarForm}>
                 <input type="text" value={texto} onChange={controlarImput} placeholder="Buscar serie..." />
             </form>
-            <div className="series-container">
+            <div className="cardContainer">
                 {seriesFiltradas.map((serie) => (
-                    <SeriesCard key={serie.id} serie={serie} />
+                    <SeriesCard key={serie.id} data={serie} />
                 ))}
             </div>
-            <button onClick={masSeries}>Cargar más</button>
+            <button className='cargarMas' onClick={masSeries}>Cargar más</button>
         </div>
     );  
 }

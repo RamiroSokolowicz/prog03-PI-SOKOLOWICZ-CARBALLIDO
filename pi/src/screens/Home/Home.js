@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MiFormulario from '../../components/MiFormulario/MiFormulario';
-import PeliCard from '../../components/PeliCard/PeliCard';
+import PeliCard from '../../components/PeliCard/PeliCardN';
 import SeriesCard from  '../../components/SeriesCard/SeriesCard';
 import { Link } from 'react-router-dom';
 import './Home.css';
